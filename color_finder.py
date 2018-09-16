@@ -1,10 +1,24 @@
+"""This file is part of color_finder.
+
+    color_finder is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Foobar is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <https://www.gnu.org/licenses/>."""
+
 import  win32api
 import win32gui
 from PyQt5.QtWidgets import (QWidget, QPushButton, QFrame,
-    QApplication, QLabel, QShortcut, QInputDialog, QDialog)
+    QLabel, QShortcut, QInputDialog, QDialog)
 from PyQt5.QtGui import QColor, QFont, QKeySequence, QIcon
 from PyQt5 import QtCore
-import sys
 import clipboard
 import os
 
@@ -37,19 +51,19 @@ class ColorFinder(QWidget):
 
         #Create rgb(r, g, b) label, set its font, postion and size
         font = QFont("Arial", 12)
-        self.lbl1 = QLabel('rgb(0, 0, 0)', self)
+        self.lbl1 = QLabel("rgb(0, 0, 0)", self)
         self.lbl1.move(10, 10)
         self.lbl1.resize(150, 20)
         self.lbl1.setFont(font)
 
         #Create hex #xxxxxx label, set its font, postion and size
-        self.lbl2 = QLabel('#000000', self)
+        self.lbl2 = QLabel("#000000", self)
         self.lbl2.move(30, 50)
         self.lbl2.resize(150, 20)
         self.lbl2.setFont(font)
 
         #Create help button and set postion
-        self.btn = QPushButton('Help', self)
+        self.btn = QPushButton("Help", self)
         self.btn.move(25, 90)
         self.btn.clicked.connect(self.showDialog)
 
@@ -68,7 +82,7 @@ class ColorFinder(QWidget):
         #Set postion, size and title for main window
         self.setGeometry(300, 300, 270, 130)
         self.setFixedSize(270, 130)
-        self.setWindowTitle('Colder')
+        self.setWindowTitle("Colder")
 
         #Set timer to call continuously takeColor function
         self.timer = QtCore.QTimer(self)
@@ -76,7 +90,7 @@ class ColorFinder(QWidget):
         self.timer.start(0)
 
         #Set icon for main window
-        self.setWindowIcon(QIcon('colder.png'))
+        self.setWindowIcon(QIcon("colder.png"))
 
         #Show window
         self.show()
@@ -98,7 +112,7 @@ class ColorFinder(QWidget):
         green = (color >> 8) & 255
         blue = (color >> 16) & 255
         print("rgb(" + str(red) + "," + str(green) + "," + str(blue) + ")")
-        print('#%02x%02x%02x' % (red, green, blue))
+        print("#%02x%02x%02x" % (red, green, blue))
 
         #Change frame color
         col.setRgb(red, green, blue)
@@ -109,7 +123,7 @@ class ColorFinder(QWidget):
 
         #Print color values to rgb and hex
         self.lbl1.setText("rgb(" + str(red) + "," + str(green) + "," + str(blue) + ")")
-        self.lbl2.setText('#%02x%02x%02x' % (red, green, blue))
+        self.lbl2.setText("#%02x%02x%02x" % (red, green, blue))
 
     def copyColor(self):
         """Function which copies color value"""
@@ -124,8 +138,8 @@ class ColorFinder(QWidget):
         self.timer.timeout.disconnect(self.takeColor)
 
         #Take the name of the saved color value
-        text, ok = QInputDialog.getText(self, 'Input Dialog',
-            'Enter color name:')
+        text, ok = QInputDialog.getText(self, "Input Dialog",
+            "Enter color name:")
 
         #Save color value in rgb and hex and its name
         if ok:
@@ -158,11 +172,11 @@ class ColorFinder(QWidget):
             dialog_file = QDialog(self)
             dialog_file.setGeometry(320, 350, 230, 50)
             dialog_file.setFixedSize(230, 50)
-            dialog_file.setWindowTitle('Complete')
+            dialog_file.setWindowTitle("Complete")
 
             #Create label, set its font, postion and size
             font = QFont("Arial", 12)
-            dialog_file.lbl1 = QLabel('File: exportColor.txt created', dialog)
+            dialog_file.lbl1 = QLabel("File: exportColor.txt created", dialog)
             dialog_file.lbl1.move(20, 7)
             dialog_file.lbl1.resize(200, 40)
             dialog_file.lbl1.setFont(font)
@@ -177,33 +191,26 @@ class ColorFinder(QWidget):
         dialog = QDialog(self)
         dialog.setGeometry(340, 270, 200, 190)
         dialog.setFixedSize(200, 190)
-        dialog.setWindowTitle('Help')
+        dialog.setWindowTitle("Help")
 
         #Create label, set its font, postion and size
         font = QFont("Arial", 12)
-        dialog.lbl1 = QLabel(' Type [C] to copy \n' + 'current color value', dialog)
+        dialog.lbl1 = QLabel(" Type [C] to copy \n" + "current color value", dialog)
         dialog.lbl1.move(30, 10)
         dialog.lbl1.resize(150, 40)
         dialog.lbl1.setFont(font)
 
         #Create label, set its font, postion and size
-        dialog.lbl2 = QLabel('  Type [S] to save \n' + 'current color value \n' + '    in a file which \n can be exported', dialog)
+        dialog.lbl2 = QLabel("  Type [S] to save \n" + "current color value \n" + "    in a file which \n can be exported", dialog)
         dialog.lbl2.move(30, 64)
         dialog.lbl2.resize(150, 80)
         dialog.lbl2.setFont(font)
 
         #Create label, set its font, postion and size
-        dialog.lbl3 = QLabel('Type [E] to export file', dialog)
+        dialog.lbl3 = QLabel("Type [E] to export file", dialog)
         dialog.lbl3.move(27, 130)
         dialog.lbl3.resize(150, 80)
         dialog.lbl3.setFont(font)
 
         #Show dialog window
         dialog.show()
-
-if __name__ == '__main__':
-
-    #Start app
-    app = QApplication(sys.argv)
-    color_finder = ColorFinder()
-    sys.exit(app.exec_())
