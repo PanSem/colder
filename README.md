@@ -7,7 +7,7 @@ Colder is a program which can find color hex and rgb values in every pixel of yo
 ### Requirements
 * Windows 7, 8.1, 10
 
-### Download colder from (portable):
+### Download colder from:
 * `https:...`
 
 ## Usage

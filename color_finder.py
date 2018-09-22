@@ -18,9 +18,15 @@ import win32gui
 from PyQt5.QtWidgets import (QWidget, QPushButton, QFrame,
     QLabel, QShortcut, QInputDialog, QDialog)
 from PyQt5.QtGui import QColor, QFont, QKeySequence, QIcon
-from PyQt5 import QtCore
+from PyQt5 import QtCore, QtWidgets
 import clipboard
 import os
+import sys
+
+def resource_path(relative_path):
+     if hasattr(sys, '_MEIPASS'):
+         return os.path.join(sys._MEIPASS, relative_path)
+     return os.path.join(os.path.abspath("."), relative_path)
 
 class ColorFinder(QWidget):
     """Window class"""
@@ -90,7 +96,7 @@ class ColorFinder(QWidget):
         self.timer.start(0)
 
         #Set icon for main window
-        self.setWindowIcon(QIcon("colder.png"))
+        self.setWindowIcon(QIcon(resource_path("colder.png")))
 
         #Show window
         self.show()
@@ -156,7 +162,7 @@ class ColorFinder(QWidget):
         if len(self.color_name) != 0:
 
             #Open file to save color calues
-            f = open(os.path.expanduser("~\\Desktop") + "\\exportColor.txt", "w")
+            f = open(os.path.expanduser("~\\Desktop") + "\\exportColor.txt", "a")
             f.write("Color values \n")
 
             #Write color values to the file
@@ -176,7 +182,7 @@ class ColorFinder(QWidget):
 
             #Create label, set its font, postion and size
             font = QFont("Arial", 12)
-            dialog_file.lbl1 = QLabel("File: exportColor.txt created", dialog)
+            dialog_file.lbl1 = QLabel("File: exportColor.txt created", dialog_file)
             dialog_file.lbl1.move(20, 7)
             dialog_file.lbl1.resize(200, 40)
             dialog_file.lbl1.setFont(font)
