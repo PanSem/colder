@@ -9,6 +9,7 @@ Colder is a program which can find color hex and rgb values in every pixel of yo
 
 ### Download colder from:
 * `https://pansem.github.io/Colder-site/`
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
 ## Usage
 
