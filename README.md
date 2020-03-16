@@ -2,13 +2,15 @@
 
 Colder is a program which can find color hex and rgb values in every pixel of your desktop
 
+![alt text](https://github.com/PanSem/colder/blob/master/colder_ex.png)
+
 ## Installation
 
 ### Requirements
 * Windows 7, 8.1, 10
 
 ### Download colder from:
-* `https:...`
+* [Colder](https://pansem.github.io/Colder-site/)
 
 ## Usage
 
