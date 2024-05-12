@@ -10,7 +10,7 @@ Colder is a program that can identify color hex and RGB values for every pixel o
 * Windows 7, 8.1, 10
 
 ### Download colder from:
-* [Colder](https://pansem.github.io/Colder-site/)
+* [Colder](https://pansem.github.io/Colder-site-new/)
 
 ## Usage
 
