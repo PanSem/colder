@@ -1,6 +1,6 @@
 # Colder ![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
 
-Colder is a program which can find color hex and rgb values in every pixel of your desktop
+Colder is a program that can identify color hex and RGB values for every pixel on your desktop
 
 ![alt text](https://github.com/PanSem/colder/blob/master/colder_image.png)
 
